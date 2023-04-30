@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7jandme7x5f"]
+
+[ext_resource type="Script" path="res://car/Car.gd" id="1_gmonw"]
+[ext_resource type="Texture2D" uid="uid://b3flwgmog81u1" path="res://car/sprites/green_right.png" id="1_k8bd3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0p6ug"]
+size = Vector2(145, 72.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ga6he"]
+size = Vector2(111, 71)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij2l"]
+size = Vector2(144, 70.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ge2y"]
+size = Vector2(112, 71)
+
+[node name="Car" type="CharacterBody2D"]
+script = ExtResource("1_gmonw")
+
+[node name="right" type="CollisionShape2D" parent="."]
+position = Vector2(-4.5, 27.25)
+shape = SubResource("RectangleShape2D_0p6ug")
+
+[node name="up" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.499999)
+shape = SubResource("RectangleShape2D_ga6he")
+disabled = true
+
+[node name="left" type="CollisionShape2D" parent="."]
+position = Vector2(-4, -26.75)
+shape = SubResource("RectangleShape2D_0ij2l")
+disabled = true
+
+[node name="down" type="CollisionShape2D" parent="."]
+position = Vector2(1, -0.5)
+shape = SubResource("RectangleShape2D_6ge2y")
+disabled = true
+
+[node name="sprite" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_k8bd3")
