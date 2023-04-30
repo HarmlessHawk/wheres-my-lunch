@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7h0bt8rxuahu"]
+
+[ext_resource type="Script" path="res://score_gain/score_gain.gd" id="1_kihy2"]
+[ext_resource type="Texture2D" uid="uid://b48a6h17v6anj" path="res://score_gain/sprites/rating_star.png" id="1_owomc"]
+[ext_resource type="Texture2D" uid="uid://dlhoas63y744m" path="res://score_panel/sprites/money.png" id="1_yjcvw"]
+[ext_resource type="AudioStream" uid="uid://bynfpu8d2tr85" path="res://audio/scored.wav" id="4_y4hgq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ap73v"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_camys"]
+font_size = 24
+
+[node name="score_gain" type="Node2D"]
+z_index = 6
+scale = Vector2(2, 2)
+script = ExtResource("1_kihy2")
+
+[node name="rating_star" type="Sprite2D" parent="."]
+position = Vector2(-20, -19)
+texture = ExtResource("1_owomc")
+
+[node name="salary_icon" type="Sprite2D" parent="."]
+position = Vector2(-43, -63)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_yjcvw")
+
+[node name="rating_label" type="Label" parent="."]
+offset_left = 9.0
+offset_top = -38.0
+offset_right = 29.0
+offset_bottom = -1.0
+text = "4"
+label_settings = SubResource("LabelSettings_ap73v")
+
+[node name="salary_label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -81.0
+offset_right = 47.0
+offset_bottom = -44.0
+text = "$2.68"
+label_settings = SubResource("LabelSettings_camys")
+
+[node name="sound_effect_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_y4hgq")
+volume_db = -10.0
+pitch_scale = 0.8
+autoplay = true

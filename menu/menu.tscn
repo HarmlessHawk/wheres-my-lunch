@@ -1,0 +1,192 @@
+[gd_scene load_steps=11 format=3 uid="uid://j6mmcgrt8hdp"]
+
+[ext_resource type="Script" path="res://menu/menu.gd" id="1_em6uc"]
+[ext_resource type="FontFile" uid="uid://b75ssbbyprhul" path="res://menu/CoffeCake.ttf" id="1_ku18p"]
+[ext_resource type="Texture2D" uid="uid://cy0l0f6q5yyed" path="res://menu/sprites/hh_logo.png" id="2_numqf"]
+[ext_resource type="AudioStream" uid="uid://ba1dtsea2444s" path="res://audio/click.ogg" id="4_mc6h1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wiruv"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvlpq"]
+font = ExtResource("1_ku18p")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_whn5e"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_r531u"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_vwgop"]
+font_size = 40
+font_color = Color(0.243137, 0.611765, 0.513726, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_57ubo"]
+font_size = 30
+
+[node name="menu" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_em6uc")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wiruv")
+
+[node name="title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 267.0
+offset_bottom = 291.0
+text = "Where's
+My
+Lunch?"
+label_settings = SubResource("LabelSettings_uvlpq")
+horizontal_alignment = 1
+
+[node name="hh_logo" type="TextureRect" parent="Panel"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+texture = ExtResource("2_numqf")
+expand_mode = 2
+
+[node name="menu_items_container" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -284.0
+offset_top = -272.0
+offset_right = -30.0
+offset_bottom = -128.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="new_game" type="Label" parent="Panel/menu_items_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "New Game"
+label_settings = SubResource("LabelSettings_whn5e")
+horizontal_alignment = 2
+
+[node name="credits" type="Label" parent="Panel/menu_items_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "Credits
+"
+label_settings = SubResource("LabelSettings_r531u")
+horizontal_alignment = 2
+
+[node name="credits_container" type="VBoxContainer" parent="Panel"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.5
+offset_top = -247.0
+offset_right = 220.5
+offset_bottom = 247.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title1" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+text = "Design & Programming"
+label_settings = SubResource("LabelSettings_vwgop")
+horizontal_alignment = 1
+
+[node name="design_programming" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "pshegger"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="title2" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+text = "
+Graphics"
+label_settings = SubResource("LabelSettings_vwgop")
+horizontal_alignment = 1
+
+[node name="graphics1" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "Kenney"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="graphics2" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "Khurasan"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="title3" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+text = "
+Music"
+label_settings = SubResource("LabelSettings_vwgop")
+horizontal_alignment = 1
+
+[node name="music" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "DavidKBD
+"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="title4" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+text = "
+Sounds"
+label_settings = SubResource("LabelSettings_vwgop")
+horizontal_alignment = 1
+
+[node name="sounds1" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "Shapeforms Audio
+"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="sounds2" type="Label" parent="Panel/credits_container"]
+layout_mode = 2
+mouse_filter = 0
+text = "Kenney
+"
+label_settings = SubResource("LabelSettings_57ubo")
+horizontal_alignment = 1
+
+[node name="click_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mc6h1")
+volume_db = -5.0
+
+[connection signal="gui_input" from="Panel" to="." method="_on_panel_gui_input"]
+[connection signal="gui_input" from="Panel/menu_items_container/new_game" to="." method="_on_new_game_gui_input"]
+[connection signal="gui_input" from="Panel/menu_items_container/credits" to="." method="_on_credits_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/design_programming" to="." method="_on_design_programming_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/graphics1" to="." method="_on_graphics_1_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/graphics2" to="." method="_on_graphics_2_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/music" to="." method="_on_music_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/sounds1" to="." method="_on_sounds_1_gui_input"]
+[connection signal="gui_input" from="Panel/credits_container/sounds2" to="." method="_on_sounds_2_gui_input"]

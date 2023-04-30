@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cys73megpryf8"]
+
+[ext_resource type="Texture2D" uid="uid://dalcadvof321m" path="res://ui_sheet.png" id="1_v07tl"]
+[ext_resource type="Script" path="res://destination_marker/destination_marker.gd" id="2_cb36a"]
+
+[node name="destination_marker" type="Sprite2D"]
+modulate = Color(1, 1, 1, 0.784314)
+z_index = 5
+scale = Vector2(16, 16)
+texture = ExtResource("1_v07tl")
+offset = Vector2(0, -8)
+region_enabled = true
+region_rect = Rect2(414, 414, 16, 16)
+script = ExtResource("2_cb36a")

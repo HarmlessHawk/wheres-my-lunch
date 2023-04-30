@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqdd48m2ulijr"]
+
+[ext_resource type="Texture2D" uid="uid://cykryiwifdims" path="res://game_over/sprites/esc.png" id="1_4rc66"]
+[ext_resource type="Script" path="res://game_over/game_over.gd" id="1_gmac7"]
+[ext_resource type="Texture2D" uid="uid://ikrtuk88kx1n" path="res://game_over/sprites/r_key.png" id="2_lg8wu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd66m"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[sub_resource type="LabelSettings" id="LabelSettings_il80j"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_tq851"]
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_oa7fv"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_f0hg3"]
+font_size = 32
+
+[node name="game_over" type="CanvasLayer"]
+layer = 2
+script = ExtResource("1_gmac7")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jd66m")
+
+[node name="game_over_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -173.5
+offset_top = 150.0
+offset_right = 173.5
+offset_bottom = 241.0
+grow_horizontal = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_il80j")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="game_over_explanation_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -401.0
+offset_top = 250.0
+offset_right = 401.0
+offset_bottom = 324.0
+grow_horizontal = 2
+text = "Your rating has dropped below the threshold and you've been fired.
+Better luck with your next job."
+label_settings = SubResource("LabelSettings_tq851")
+horizontal_alignment = 1
+
+[node name="final_salary_label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -208.0
+offset_top = 350.0
+offset_right = 208.0
+offset_bottom = 420.0
+grow_horizontal = 2
+text = "Total Salary: $0.00"
+label_settings = SubResource("LabelSettings_oa7fv")
+horizontal_alignment = 1
+
+[node name="back_to_menu_container" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -70.0
+offset_right = 180.0
+offset_bottom = -30.0
+grow_vertical = 0
+
+[node name="icon" type="TextureRect" parent="Panel/back_to_menu_container"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_4rc66")
+
+[node name="label" type="Label" parent="Panel/back_to_menu_container"]
+layout_mode = 2
+text = "Menu"
+label_settings = SubResource("LabelSettings_f0hg3")
+
+[node name="restart_container" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -90.0
+offset_right = -30.0
+offset_bottom = -30.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="icon" type="TextureRect" parent="Panel/restart_container"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("2_lg8wu")
+
+[node name="label" type="Label" parent="Panel/restart_container"]
+layout_mode = 2
+text = "Retry"
+label_settings = SubResource("LabelSettings_f0hg3")

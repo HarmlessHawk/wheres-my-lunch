@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Car
 
 const _THROTTLE = 1000
-const _MAX_SPEED = 1000
+const _MAX_SPEED = 1500
 const _TURN_SPEED = 180
 const _AUTO_BRAKE = 500
 
@@ -22,6 +22,7 @@ var _prev_dir: MODEL.Direction = MODEL.Direction.Right
 var _prev_color: MODEL.BodyColor = MODEL.BodyColor.Green
 var _speed: float = 0
 var _throttling: bool = false
+var _is_game_running: bool = false
 
 var _textures: Array[Texture] = [
     preload("res://car/sprites/green_up.png"),
@@ -38,8 +39,17 @@ var _textures: Array[Texture] = [
     preload("res://car/sprites/orange_left.png"),
 ]
 
+func _ready():
+    var map = get_tree().current_scene as MapScene
+    _is_game_running = map._is_game_running
+    map.game_state_changed.connect(_on_game_state_changed)
+
 
 func _process(delta):
+    if !_is_game_running:
+        _update_texture()
+        return
+        
     var dir = Vector2(cos(rotation), sin(rotation)).normalized()
     if !_throttling:
         _speed = max(0, _speed - _AUTO_BRAKE * delta)
@@ -54,7 +64,9 @@ func _process(delta):
         direction = MODEL.Direction.Down
     else:
         direction = MODEL.Direction.Left
-    
+    _update_texture()
+        
+func _update_texture():
     if _prev_dir != direction || _prev_color != body_color:
         _sprite.texture = _get_texture()
         _down_bounds.disabled = direction != MODEL.Direction.Down
@@ -65,10 +77,14 @@ func _process(delta):
         _prev_color = body_color
         
 func throttle(delta: float):
+    if !_is_game_running:
+        return
     _speed = clamp(_speed + _THROTTLE * delta, 0, max_speed)
     _throttling = true
     
 func turn(delta: float):
+    if !_is_game_running:
+        return
     rotation_degrees += (_TURN_SPEED * (_speed / max_speed)) * delta
 
 func _get_texture() -> Texture:
@@ -89,3 +105,5 @@ func _get_texture() -> Texture:
         index += 3
     return _textures[index]
     
+func _on_game_state_changed(is_running: bool):
+    _is_game_running = is_running

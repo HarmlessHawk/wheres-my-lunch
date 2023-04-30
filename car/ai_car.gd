@@ -13,16 +13,14 @@ const MODEL = preload("res://car/model.gd")
 var _current_target: int = 0
 var _turning: bool = false
 
+var _starting_direction: MODEL.Direction
+var _starting_position: Vector2
+
 func _ready():
-    _car.direction = direction
-    if direction == MODEL.Direction.Up:
-        _car.rotation_degrees = -90
-    elif direction == MODEL.Direction.Left:
-        _car.rotation_degrees = -180
-    elif direction == MODEL.Direction.Down:
-        _car.rotation_degrees = 90
-    _car.body_color = body_color
-    _car.max_speed = max_speed
+    _starting_direction = direction
+    _starting_position = _car.position
+    restart()
+    add_to_group("ai_car")
     if debug:
         for r in route:
             var s = Sprite2D.new()
@@ -48,3 +46,20 @@ func _process(delta):
         _car.throttle(delta)
     else:
         _current_target = (_current_target + 1) % len(route)
+
+func restart():
+    _car.direction = _starting_direction
+    _car.position = _starting_position
+    if _starting_direction == MODEL.Direction.Up:
+        _car.rotation_degrees = -90
+    elif _starting_direction == MODEL.Direction.Left:
+        _car.rotation_degrees = -180
+    elif _starting_direction == MODEL.Direction.Down:
+        _car.rotation_degrees = 90
+    else:
+        _car.rotation_degrees = 0
+    _car.body_color = body_color
+    _car.max_speed = max_speed
+    _car._speed = 0
+    _current_target = 0
+    _turning = false
