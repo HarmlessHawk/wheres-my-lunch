@@ -10,6 +10,10 @@ signal new_game
 const _CREDITS_REVEAL_DURATION = 0.5
 
 
+func _ready():
+    add_to_group("menu")
+
+
 func _process(delta):
     if Input.is_action_just_pressed("back"):
         if _is_credits_visible():

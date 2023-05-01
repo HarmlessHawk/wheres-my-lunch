@@ -13,17 +13,25 @@ config_version=5
 config/name="Where's My Lunch?"
 run/main_scene="res://map_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-boot_splash/image="res://menu/sprites/hh_logo.png"
-config/icon="res://icon.svg"
+run/max_fps=60
+boot_splash/bg_color=Color(0.133333, 0.129412, 0.164706, 1)
+boot_splash/image="res://splash_logo.png"
+config/macos_native_icon="res://icon.png"
+config/windows_native_icon="res://icon.png"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=800
+window/size/mode=2
 window/size/initial_position_type=2
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=0
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/coi_serviceworker/plugin.cfg")
 
 [input]
 

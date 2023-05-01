@@ -17,6 +17,7 @@ var _delivery_started: int = 0
 
 const DESTINATION_MARKER = preload("res://destination_marker/destination_marker.tscn")
 const GAME_OVER_OVERLAY = preload("res://game_over/game_over.tscn")
+const MENU = preload("res://menu/menu.tscn")
 
 const _BASE_SALARY: float = 2.0
 const _DISTANCE_PER_DOLLAR: int = 5000
@@ -54,7 +55,8 @@ func _on_score_changed(salary: float, rating: float):
     score_panel.update_salary(salary)
     
 func _on_new_game():
-    get_node("menu").queue_free()
+    for n in get_tree().get_nodes_in_group("menu"):
+        n.queue_free()
     _restart()
 
 func _on_game_over(final_salary: float):
@@ -76,7 +78,10 @@ func _restart():
     bg_music_player.play(0)
 
 func _on_game_over_back_to_menu():
-    get_tree().reload_current_scene()
+    for n in get_tree().get_nodes_in_group("game_over_overlay"):
+        n.queue_free()
+    bg_music_player.stop()
+    add_child(MENU.instantiate())
 
 func _on_game_over_restart():
     for n in get_tree().get_nodes_in_group("game_over_overlay"):

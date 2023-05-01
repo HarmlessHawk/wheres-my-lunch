@@ -3278,6 +3278,7 @@ layer_1/tile_data = PackedInt32Array(-786511, 2097152, 2, -786510, 2162688, 2, -
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="fps_label" type="Label" parent="CanvasLayer"]
+visible = false
 offset_left = 20.0
 offset_right = 110.0
 offset_bottom = 48.0

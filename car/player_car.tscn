@@ -11,6 +11,7 @@ script = ExtResource("1_6mvi3")
 
 [node name="Camera2D" type="Camera2D" parent="Car"]
 zoom = Vector2(0.25, 0.25)
+process_callback = 0
 
 [node name="direction_marker" type="Sprite2D" parent="."]
 z_index = 5

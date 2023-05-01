@@ -24,7 +24,7 @@ func _ready():
     if debug:
         for r in route:
             var s = Sprite2D.new()
-            s.texture = load("res://icon.svg")
+            s.texture = load("res://icon.png")
             s.global_position = r - global_position
             add_child(s)
 
